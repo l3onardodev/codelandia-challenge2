@@ -1,86 +1,29 @@
 <template>
     <div class="items">
-        <div class="product-item" v-for="item in items" :key="item.id" @mouseover="item['hover'] = true" @mouseleave="item['hover'] = false">
-            <img v-bind:src="item.image" :title="item.model" class="product-item__image">
+        <div class="product-item" v-for="item in $store.state.shoes" :key="item.id" @mouseover="item['hover'] = true" @mouseleave="item['hover'] = false">
+            <img :src="item.image" :title="item.model" class="product-item__image">
+
             <div class="product-item-hovered" v-bind:class="{ opacity1: item['hover'] }">
                 <h2 class="product-item-hovered__title">{{ item.model }}</h2>
-                <button class="product-item-hovered__button">ver produto</button>
+                <router-link :to="`/product/${item.id}`"><button class="product-item-hovered__button" @click="item['hover'] = false">ver produto</button></router-link>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-    export default {
-        data() {
-            return {
-                items: [{
-                    id: 1,
-                    model: 'nike air',
-                    price: 300,
-                    description: 'tranquilo',
-                    image: require('../assets/items/1.png'),
-                    hover: false
-                },
-                {
-                    id: 2,
-                    model: 'nike naosei',
-                    price: 450,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/2.png'),
-                    hover: false
-                },
-                {
-                    id: 3,
-                    model: 'nike pika',
-                    price: 500,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/3.png'),
-                    hover: false
-                },
-                {
-                    id: 4,
-                    model: 'nike naosei',
-                    price: 450,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/4.png'),
-                    hover: false
-                },
-                {
-                    id: 5,
-                    model: 'nike naosei',
-                    price: 450,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/5.png'),
-                    hover: false
-                },
-                {
-                    id: 6,
-                    model: 'nike naosei',
-                    price: 450,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/6.png'),
-                    hover: false
-                },
-                {
-                    id: 7,
-                    model: 'nike naosei',
-                    price: 450,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/7.png'),
-                    hover: false
-                },
-                {
-                    id: 8,
-                    model: 'nike naosei',
-                    price: 450,
-                    description: 'tenis mto bala',
-                    image: require('../assets/items/8.png'),
-                    hover: false
-                }]
-            }
+
+import items from '../views/Home.vue';
+
+export default {
+    props: ['item-object'],
+    data() {
+        return {
+            items
         }
     }
+}
+
 </script>
 
 <style>

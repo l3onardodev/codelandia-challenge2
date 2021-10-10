@@ -37,7 +37,7 @@
     },
     data() {
       return {
-        promotion__header: 'Ganhe R$10,00 de desconto no frete.'
+        promotion__header: 'Ganhe R$10,00 de desconto no frete.',
       }
     }
   }
@@ -58,17 +58,17 @@
     height: auto;
   }
   .promotion {
-      height: 60px;
-      width: 100%;
-      background-color: #181818;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    height: 60px;
+    width: 100%;
+    background-color: #181818;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .promotion__header {
-      font-size: 1rem;
-      font-weight: 500;
-      color: #f9f9f9;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #f9f9f9;
   }
   .website-title {
     width: 100%;
@@ -140,11 +140,7 @@
     font-size: 2rem;
     font-weight: 600;
   }
-  .products__paragraph {
-    font-weight: 500;
-    font-size: 1.1rem;
-    margin: 1em 0;
-  }
+  
   .products-items {
     width: 100%;
   }
