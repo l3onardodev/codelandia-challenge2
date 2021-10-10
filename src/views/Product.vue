@@ -21,12 +21,14 @@
           <button class="product-button product-button__add-to-cart">Adicionar ao Carrinho</button>
         </div>
       </section>
-      <section>
+      <section class="related-products-container">
+        <h2 class="related-products__title">Produtos relacionados:</h2>
+
         <swiper
           :slides-per-view="4"
-          :space-between="20"
+          :space-between="10"
           navigation
-          :pagination="{ clickable: false }"
+          :pagination="{ clickable: true }"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
           ref="mySlider"
@@ -88,6 +90,10 @@
 </script>
 
 <style>
+    :root {
+      --swiper-theme-color: #181818;
+    }
+
     .product-container {
       width: 85%;
       height: auto;
@@ -151,11 +157,17 @@
       border: 1px solid #ccc;
     }
 
-    /* products swiper container */
-    .products-swiper-container {
+    /* related products container */
+    .related-products-container {
+      display: flex;
+      flex-direction: column;
       width: 85%;
-      height: 200px;
       margin: 0 auto;
+    }
+
+    .products-swiper-container {
+      width: 100%;
+      height: 200px;
     }
 
     .swiper-wrapper {
@@ -170,6 +182,8 @@
     .swiper-slide img {
       /* height: 100%; */
       transform: scale(1.25);
-      width: 80%;
+      max-width: 65%;
     }
+
+    
 </style>
