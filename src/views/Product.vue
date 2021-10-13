@@ -10,15 +10,27 @@
           <img :src="product.image" class="product__image">
         </div>
         <div class="product-container-details">
-          <h2 class="product-details__model">{{ product.model }}</h2>
-          <label class="product-details__price">R${{ product.price }}</label>
-          <p class="product-details__description">{{ product.description }}</p>
+          <h2 class="product-details__model">{{ transformProductTitle(product.model) }}</h2>
+          <label class="product-details__price">R$ {{ product.price }}</label>
+          <label class="product-details__installment">Parcelamento em até 4x sem juros</label>
 
-          <!-- buy button -->
-          <button class="product-button product-button__buy">Comprar Agora</button>
+          <div class="product-button-container">
+            <!-- buy button -->
+            <button class="product-button product-button__buy">Comprar Agora</button>
 
-          <!-- add item to cart button -->
-          <button class="product-button product-button__add-to-cart">Adicionar ao Carrinho</button>
+            <!-- add item to cart button -->
+            <button class="product-button product-button__add-to-cart">Adicionar ao Carrinho</button>
+          </div>
+
+          <div class="shoe-size-container">
+            <div class="shoe-size-span-container">
+              <span class="shoe-size-span">tamanho</span>
+              <span class="shoe-measure-span">Tabelas de medidas</span>
+            </div>
+            <div class="shoe-size-container">
+              <span class="shoe-size" v-for="size in product.sizes" v-bind:key="size"> {{ size }} </span>
+            </div>
+          </div>
         </div>
       </section>
       <section class="related-products-container">
@@ -56,7 +68,7 @@
   export default {
     data() {
       return {
-        product: this.findProduct()
+        product: this.findProduct(),
         }
       },
       components: {
@@ -73,6 +85,11 @@
             return;
           }
         },
+        transformProductTitle(productModel) {
+          return productModel.split(' ').map((element) => {
+            return element.replace(element[0], element[0].toUpperCase());
+          }).join(' ');
+        }
       },
       setup() {
         const onSwiper = (swiper) => {
@@ -119,25 +136,30 @@
       display: flex;
       flex-direction: column;
       width: 40%;
-      padding: 1em;
+      padding: 0 1em;
     }
 
     .product-details__model {
-      font-size: 3rem;
+      font-size: 2.4rem;
       font-weight: 400;
     }
 
     .product-details__price {
-      font-weight: 600;
+      font-weight: 700;
       font-size: 1.5rem;
+      margin: 0.3em 0;
+    }
+
+    .product-details__installment {
+      font-size: .9rem;
     }
 
     /* product buttons  */
     
     .product-button {
       width: 100%;
-      height: 50px;
-      border-radius: 15px;
+      height: 60px;
+      border-radius: 30px;
       border: none;
 
       color: #f6f6f6;
@@ -165,6 +187,10 @@
       margin: 0 auto;
     }
 
+    .related-products__title {
+      font-weight: 500;
+    }
+
     .products-swiper-container {
       width: 100%;
       height: 200px;
@@ -184,6 +210,41 @@
       transform: scale(1.25);
       max-width: 65%;
     }
-
     
+    .shoe-size-span-container {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .shoe-size-container {
+      display: inline-grid;
+    }
+
+    .shoe-size {
+      display: flex;
+      justify-content: center;
+      padding: 1em;
+      width: 50%;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      color: #181818;
+    }
+
+    .shoe-size-span-container {
+      margin: 1em 0;
+    }
+
+    .shoe-size-span {
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #8d8d8d;
+      text-transform: uppercase;
+    }
+
+    .shoe-measure-span {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #181818;
+    }
 </style>
