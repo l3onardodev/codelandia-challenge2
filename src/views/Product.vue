@@ -6,7 +6,7 @@
 
       <!-- container for displaying image and details of product -->
       <section class="product-container">
-        <div class="product-container-image">
+        <div class="product-container-image" @mousemove="imageZoomOnHoverEntry($event)" @mouseleave="imageZoomOnHoverLeft">
           <img :src="product.image" class="product__image">
         </div>
         <div class="product-container-details">
@@ -96,6 +96,33 @@
             return element.replace(element[0], element[0].toUpperCase());
           }).join(' ');
         },
+
+        imageZoomOnHoverEntry(event) {
+          const general_area = document.querySelector('.product-container-image');
+
+          console.log(event.clientX);
+          console.log(event.clientY)
+
+          const image_area = document.querySelector('.product__image');
+
+          let clientX = event.clientX - general_area.offsetLeft;
+          let clientY = event.clientY - general_area.offsetTop;
+
+          const mWidth = general_area.offsetWidth;
+          const mHeight = general_area.offsetHeight;
+
+          clientX = clientX / mWidth * 100;
+          clientY = clientY / mHeight * 100;
+
+          image_area.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2)`;
+
+          console.log(general_area, image_area);
+        },
+
+        imageZoomOnHoverLeft() {
+          const image_area = document.querySelector('.product__image');
+          image_area.style.transform = 'translate(-50%, -50%) scale(1)'
+        }
       },
       setup() {
         const onSwiper = (swiper) => {
@@ -138,13 +165,17 @@
     .product-container-image {
       width: 70%;
       height: 400px;
+      overflow: hidden;
       background-color: #EBE9EA;
     }
 
     .product__image {
       max-width: 100%;
       max-height: 100%;
-      object-fit: contain;
+      position: relative;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
 
     .product-container-details {
