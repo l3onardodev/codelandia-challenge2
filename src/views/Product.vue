@@ -38,7 +38,7 @@
 
         <swiper
           :slides-per-view="4"
-          :autoplay= "{ delay: 3000 }"
+          :autoplay="{ delay: 3000 }"
           :navigation="{ clickable: true }"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
@@ -95,7 +95,7 @@
           return productModel.split(' ').map((element) => {
             return element.replace(element[0], element[0].toUpperCase());
           }).join(' ');
-        }
+        },
       },
       setup() {
         const onSwiper = (swiper) => {
@@ -111,6 +111,13 @@
       },
   }
 </script>
+
+<!-- global styles for swiper buttons -->
+<style>
+    .swiper-button-next, .swiper-button-prev{
+      color: #181818;
+    }
+</style>
 
 <style scoped>
     /* a way to change swiper's buttons colors */
@@ -212,7 +219,7 @@
     .products-swiper-container {
       width: 100%;
       height: 350px;
-      border: 1px solid red;
+      margin: 2em 0;
     }
 
     .swiper-slide {
@@ -238,6 +245,7 @@
     .swiper-product-image img {
       object-fit: contain;
       max-width: 100%;
+      transition: all .25s ease;
     }
 
     .swiper-product__title {
@@ -291,4 +299,10 @@
       font-weight: 700;
       color: #181818;
     }
+
+    /* hover effects */
+    .swiper-product:hover .swiper-product-image img{
+      transform: scale(1.03);
+    }
+    
 </style>
