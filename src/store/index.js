@@ -9,6 +9,7 @@ export default createStore({
                 price: 300,
                 image: require("../assets/items/1.png"),
                 sizes: ["M 36 / F 36", "M 37 / F 44"],
+                section: "Casual",
                 hover: false,
             },
             {

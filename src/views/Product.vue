@@ -27,8 +27,8 @@
               <span class="shoe-size-span">tamanho</span>
               <span class="shoe-measure-span">Tabelas de medidas</span>
             </div>
-            <div class="shoe-size-container">
-              <span class="shoe-size" v-for="size in product.sizes" v-bind:key="size"> {{ size }} </span>
+            <div class="shoe-size">
+              <span class="shoe-size-item" v-for="size in product.sizes" v-bind:key="size"> {{ size }} </span>
             </div>
           </div>
         </div>
@@ -38,16 +38,22 @@
 
         <swiper
           :slides-per-view="4"
-          :space-between="10"
-          navigation
-          :pagination="{ clickable: true }"
+          :autoplay= "{ delay: 3000 }"
+          :navigation="{ clickable: true }"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
           ref="mySlider"
           class="products-swiper-container">
 
           <swiper-slide style="products-swiper__item" v-for="product in $store.state.shoes" v-bind:key="product">
-            <img :src="`${product.image}`">
+            <div class="swiper-product">
+              <div class="swiper-product-image">
+                <img :src="`${product.image}`">
+              </div>
+              <span class="swiper-product__title">{{ product.model }}</span>
+              <span class="swiper-product__section">{{ product.section }}</span>
+              <span class="swiper-product__price">{{ product.price }}</span>
+            </div>
           </swiper-slide>
         </swiper>
       </section>
@@ -55,7 +61,7 @@
 </template>
 
 <script>
-  import SwiperCore, { Navigation, Pagination, A11y } from "swiper";
+  import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper";
   import { Swiper, SwiperSlide } from 'swiper/vue';
 
   // Import Swiper styles
@@ -63,7 +69,7 @@
   // import "swiper/components/navigation/navigation.css";
   // import "swiper/components/pagination/pagination.css";
 
-  SwiperCore.use([Navigation, Pagination, A11y]);
+  SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
   export default {
     data() {
@@ -106,9 +112,11 @@
   }
 </script>
 
-<style>
+<style scoped>
+    /* a way to change swiper's buttons colors */
     :root {
       --swiper-theme-color: #181818;
+      --swiper-navigation-color: #181818;
     }
 
     .product-container {
@@ -191,13 +199,20 @@
       font-weight: 500;
     }
 
-    .products-swiper-container {
-      width: 100%;
-      height: 200px;
+    /* swiper styles */
+
+    .swiper-button-next {
+      right: 0;
     }
 
     .swiper-wrapper {
       padding: 0 3em;
+    }
+
+    .products-swiper-container {
+      width: 100%;
+      height: 350px;
+      border: 1px solid red;
     }
 
     .swiper-slide {
@@ -205,10 +220,39 @@
       align-items: center;
     }
 
-    .swiper-slide img {
-      /* height: 100%; */
-      transform: scale(1.25);
-      max-width: 65%;
+    .swiper-product {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      margin: 0 .5em;
+    }
+
+    .swiper-product-image {
+      display: flex;
+      justify-content: center;
+      background-color: #ebe9eab7;
+      height: 75%;
+      width: 100%;
+    }
+
+    .swiper-product-image img {
+      object-fit: contain;
+      max-width: 100%;
+    }
+
+    .swiper-product__title {
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin: 1em 0;
+    }
+
+    .swiper-product__section {
+      font-size: 0.9rem;
+      font-weight: 400;
+    }
+
+    .swiper-product__price {
+      font-weight: 500;
     }
     
     .shoe-size-span-container {
@@ -216,11 +260,11 @@
       justify-content: space-between;
     }
 
-    .shoe-size-container {
-      display: inline-grid;
+    .shoe-size {
+      display: grid;
     }
 
-    .shoe-size {
+    .shoe-size-item {
       display: flex;
       justify-content: center;
       padding: 1em;
