@@ -50,7 +50,7 @@
               <div class="swiper-product-image">
                 <img :src="`${product.image}`">
               </div>
-              <span class="swiper-product__title">{{ product.model }}</span>
+              <span class="swiper-product__title">{{ transformProductTitle(product.model) }}</span>
               <span class="swiper-product__section">{{ product.section }}</span>
               <span class="swiper-product__price">{{ product.price }}</span>
             </div>
