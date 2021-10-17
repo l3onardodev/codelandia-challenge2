@@ -101,9 +101,6 @@
         imageZoomOnHoverEntry(event) {
           const general_area = document.querySelector('.product-container-image');
 
-          console.log(event.clientX);
-          console.log(event.clientY)
-
           const image_area = document.querySelector('.product__image');
 
           let clientX = event.clientX - general_area.offsetLeft;
@@ -116,8 +113,6 @@
           clientY = clientY / mHeight * 100;
 
           image_area.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2)`;
-
-          console.log(general_area, image_area);
         },
 
         imageZoomOnHoverLeft() {

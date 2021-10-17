@@ -1,46 +1,99 @@
 <template>
-    <nav>
-        <div class="nav-title">
-            <h2 class="nav-title__header">JordanShoes</h2>
-        </div>
-
-        <ul class="nav-menu">
-            <li>
-                <router-link to="/" class="router-link-formatation"><a href="" class="nav-menu__link">Home</a></router-link>
-            </li>
-            <li>
-                <a href="" class="nav-menu__link">Shoes</a>
-            </li>
-            <li>
-                <a href="" class="nav-menu__link">Boys</a>
-            </li>
-            <li>
-                <a href="" class="nav-menu__link">Women</a>
-            </li>
-        </ul>
-        <div class="nav-assets">
-            <div class="nav-assets__search-bar">
-                <input type="text" placeholder="Procurar" class="nav-assets__search-bar__input">
-                <img src="../assets/page-nav/search.png" class="nav-assets__search-bar__icon">
+    <div class="container-general-nav" :class="{ navScrolled: isScrolled }" ref="teste">
+        <nav class="nav-container">
+            <div class="nav-title">
+                <h2 class="nav-title__header">JordanShoes</h2>
             </div>
-            <div class="nav-assets__favorite-products">
-                <img src="../assets/page-nav/heart.png" class="nav-assets__icon">
+            
+            <ul class="nav-menu">
+                <li>
+                    <router-link to="/" class="router-link-formatation"><a href="" class="nav-menu__link">Home</a></router-link>
+                </li>
+                <li>
+                    <a href="" class="nav-menu__link">Shoes</a>
+                </li>
+                <li>
+                    <a href="" class="nav-menu__link">Boys</a>
+                </li>
+                <li>
+                    <a href="" class="nav-menu__link">Women</a>
+                </li>
+            </ul>
+            <div class="nav-assets">
+                <div class="nav-assets__search-bar">
+                    <input type="text" placeholder="Procurar" class="nav-assets__search-bar__input">
+                    <img src="../assets/page-nav/search.png" class="nav-assets__search-bar__icon">
+                </div>
+                <div class="nav-assets__favorite-products">
+                    <img src="../assets/page-nav/heart.png" class="nav-assets__icon">
+                </div>
+                <div class="nav-assets__cart">
+                    <img src="../assets/page-nav/cart.png" class="nav-assets__icon">
+                </div>
             </div>
-            <div class="nav-assets__cart">
-                <img src="../assets/page-nav/cart.png" class="nav-assets__icon">
-            </div>
-        </div>
-    </nav>
+        </nav>
+    </div>
 </template>
 
 <script>
 export default {
-
+    data() {
+        return {
+            isScrolled: false
+        }
+    },
+    //monted is executed when the component is added to the DOM. It is mostly used to fetch data from an api that will be used in this compontent.
+    mounted() {
+        window.addEventListener('scroll', this.setIsScrolled, { passive: true });
+        this.setIsScrolled()
+    },
+    
+    methods: {
+        setIsScrolled() {
+            // console.log(document.querySelector('.container-general-nav').getBoundingClientRect())
+            //this returns true or false and change the variable value
+            this.isScrolled = window.scrollY > 100;
+        }
+    }
 }
 </script>
 
 <style scoped>
-    nav {
+    @keyframes teste {
+        from {
+            transform: translateY(-50px);
+        } to {
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes teste2 {
+        from {
+            background: #181818;
+            color: #fff;
+        } to {
+            background: none;
+            color: #181818;
+        }
+    }
+
+    .container-general-nav {
+        width: 100%;
+        background: none;
+        color: #181818;
+        animation: teste2 .5s ease-in;
+    }
+
+    .navScrolled {
+        position: fixed;
+        top: 0;
+        animation: teste .7s ease-in-out;
+        background-color: #181818;
+        color: #fff;
+        z-index: 3;
+    }
+
+    .nav-container {
         width: 90%;
         height: 50px;
         margin: 0 auto;
@@ -66,8 +119,8 @@ export default {
 
     .nav-menu__link {
         text-decoration: none;
-        color: #181818;
         font-weight: 500;
+        color: inherit;
 
         margin: 0 1em;
 
