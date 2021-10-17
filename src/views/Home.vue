@@ -3,9 +3,7 @@
         <div class="promotion">
           <h2 class="promotion__header">{{ promotion__header }}</h2>
         </div>
-        <div class="website-title">
-          <h2 class="website-title__header">JordanShoes</h2>
-        </div>
+        <navigation-menu/>
         <header>
           <div class="header-texts">
             <h2 class="header__title">A melhor loja de Jordan</h2>
@@ -27,13 +25,15 @@
 
 <script>
   import shoes from '../components/shoes';
+  import NavigationMenu from '../components/NavigationMenu.vue'
   export default {
     name: 'Home',
     created() {
       document.title = 'JordanShoes';
     },
     components: {
-      shoes
+      shoes,
+      NavigationMenu
     },
     data() {
       return {
@@ -70,19 +70,7 @@
     font-weight: 500;
     color: #f9f9f9;
   }
-  .website-title {
-    width: 100%;
-    height: 50px;
-    background-color: #F6F6F6;
-    
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .website-title__header {
-    font-weight: 600;
-    font-size: 1.5rem;
-  }
+
   header {
     height: 378px;
     width: 100%;

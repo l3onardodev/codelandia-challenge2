@@ -1,8 +1,6 @@
 <template>
   <div class="container">
-      <div class="website-title">
-          <h2 class="website-title__header">JordanShoes</h2>
-      </div>
+      <navigation-menu/>
 
       <!-- container for displaying image and details of product -->
       <section class="product-container">
@@ -61,6 +59,8 @@
 </template>
 
 <script>
+  import NavigationMenu from '../components/NavigationMenu.vue';
+
   import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper";
   import { Swiper, SwiperSlide } from 'swiper/vue';
 
@@ -80,6 +80,7 @@
       components: {
         Swiper,
         SwiperSlide,
+        NavigationMenu
       },
       methods: {
         findProduct() {
