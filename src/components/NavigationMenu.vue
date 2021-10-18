@@ -27,20 +27,23 @@
                 <div class="nav-assets__favorite-products">
                     <img src="../assets/page-nav/heart.png" class="nav-assets__icon">
                 </div>
-                <div class="nav-assets__cart">
-                    <img src="../assets/page-nav/cart.png" class="nav-assets__icon">
-                </div>
+                <cart/>
             </div>
         </nav>
     </div>
 </template>
 
 <script>
+import Cart from './Cart.vue';
+
 export default {
     data() {
         return {
             isScrolled: false
         }
+    },
+    components: {
+        Cart,
     },
     //monted is executed when the component is added to the DOM. It is mostly used to fetch data from an api that will be used in this compontent.
     mounted() {
@@ -52,7 +55,7 @@ export default {
         setIsScrolled() {
             // console.log(document.querySelector('.container-general-nav').getBoundingClientRect())
             //this returns true or false and change the variable value
-            this.isScrolled = window.scrollY > 100;
+            this.isScrolled = window.scrollY > 70;
         }
     }
 }
@@ -87,7 +90,7 @@ export default {
     .navScrolled {
         position: fixed;
         top: 0;
-        animation: teste .7s ease-in-out;
+        animation: teste .3s ease-in-out;
         background-color: #181818;
         color: #fff;
         z-index: 3;

@@ -17,7 +17,7 @@
             <button class="product-button product-button__buy">Comprar Agora</button>
 
             <!-- add item to cart button -->
-            <button class="product-button product-button__add-to-cart">Adicionar ao Carrinho</button>
+            <button class="product-button product-button__add-to-cart" @click="addProductToCart(product)">Adicionar ao Carrinho</button>
           </div>
 
           <div class="shoe-size-container">
@@ -92,10 +92,16 @@
             return;
           }
         },
+
         transformProductTitle(productModel) {
           return productModel.split(' ').map((element) => {
             return element.replace(element[0], element[0].toUpperCase());
           }).join(' ');
+        },
+
+        addProductToCart(product) {
+          console.log('adicionado');
+          return this.$store.state.cart.push(product);
         },
 
         imageZoomOnHoverEntry(event) {
@@ -213,6 +219,7 @@
 
     .product-button__buy  {
       background-color: #181818;
+      transition: all .5s;
     }
 
     .product-button__add-to-cart {

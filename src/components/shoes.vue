@@ -4,7 +4,7 @@
             <img :src="item.image" :title="item.model" class="product-item__image">
 
             <div class="product-item-hovered" v-bind:class="{ opacity1: item['hover'] }">
-                <h2 class="product-item-hovered__title">{{ item.model }}</h2>
+                <h2 class="product-item-hovered__title">{{ transformProductTitle(item.model) }}</h2>
                 <router-link :to="`/product/${item.id}`"><button class="product-item-hovered__button" @click="item['hover'] = false">ver produto</button></router-link>
             </div>
         </div>
@@ -21,6 +21,13 @@ export default {
         return {
             items
         }
+    },
+    methods: {
+        transformProductTitle(productModel) {
+          return productModel.split(' ').map((element) => {
+            return element.replace(element[0], element[0].toUpperCase());
+          }).join(' ');
+        },
     }
 }
 
@@ -72,7 +79,9 @@ export default {
     }
 
     .product-item-hovered__title {
-        font-size: 1.5rem;
+        text-align: center;
+        font-size: 1.1rem;
+        width: 60%;
     }
 
     .product-item-hovered__button {

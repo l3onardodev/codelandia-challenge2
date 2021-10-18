@@ -76,5 +76,6 @@ export default createStore({
                 hover: false,
             },
         ],
+        cart: [],
     },
 });
