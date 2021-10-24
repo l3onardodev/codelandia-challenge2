@@ -1,10 +1,9 @@
 <template>
-    <div class="container-general-nav" :class="{ navScrolled: isScrolled }" ref="teste">
+    <div class="container-general-nav" :class="{ navScrolled : isScrolled }" ref="navBar">
         <nav class="nav-container">
             <div class="nav-title">
                 <h2 class="nav-title__header">JordanShoes</h2>
             </div>
-            
             <ul class="nav-menu">
                 <li>
                     <router-link to="/" class="router-link-formatation"><a href="" class="nav-menu__link">Home</a></router-link>
@@ -45,17 +44,16 @@ export default {
     components: {
         Cart,
     },
-    //monted is executed when the component is added to the DOM. It is mostly used to fetch data from an api that will be used in this compontent.
+    //mounted is executed when the component is added to the DOM. It is mostly used to fetch data from an api that will be used in this compontent.
     mounted() {
         window.addEventListener('scroll', this.setIsScrolled, { passive: true });
-        this.setIsScrolled()
+        this.setIsScrolled();
     },
     
     methods: {
         setIsScrolled() {
-            // console.log(document.querySelector('.container-general-nav').getBoundingClientRect())
-            //this returns true or false and change the variable value
-            this.isScrolled = window.scrollY > 70;
+            //isScrolled when the navBar container becomes fixed.
+            this.isScrolled = this.$refs.navBar.getBoundingClientRect().top === 0;
         }
     }
 }
@@ -84,16 +82,17 @@ export default {
         width: 100%;
         background: none;
         color: #181818;
-        animation: teste2 .5s ease-in;
+        transition: all .25s ease;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+        z-index: 3;
+        top: 0;
     }
 
     .navScrolled {
-        position: fixed;
-        top: 0;
-        animation: teste .3s ease-in-out;
+        /* animation: teste .3s ease-in-out; */
         background-color: #181818;
         color: #fff;
-        z-index: 3;
     }
 
     .nav-container {
