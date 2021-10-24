@@ -20,7 +20,7 @@
             </ul>
             <div class="nav-assets">
                 <div class="nav-assets__search-bar">
-                    <font-awesome-icon icon="search" size="xl"/>
+                    <font-awesome-icon icon="search" size="1x"/>
                     <input type="text" placeholder="Procurar" class="nav-assets__search-bar__input">
                 </div>
                 <div class="nav-assets__favorite-products">
@@ -76,7 +76,8 @@ export default {
     }
 
     .nav-container {
-        width: 90%;
+        width: 100%;
+        max-width: 1200px;
         height: 50px;
         margin: 0 auto;
         display: flex;
@@ -129,12 +130,14 @@ export default {
         background-color: #EBE9EA;
         height: 70%;
         padding: 0 .6em;
+        margin: 0 .5em;
     }
 
     .nav-assets__search-bar__input {
         border: none;
         background: none;
         font-size: 0.8rem;
+        margin-left: 1em;
     }
 
     .nav-assets__search-bar__input:focus {
@@ -143,6 +146,10 @@ export default {
 
     .nav-assets__search-bar__icon {
         max-width: 20px;
+    }
+
+    .nav-assets__favorite-products {
+        margin: 0 .5em;
     }
 
     .nav-assets__icon {
