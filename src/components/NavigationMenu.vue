@@ -20,11 +20,11 @@
             </ul>
             <div class="nav-assets">
                 <div class="nav-assets__search-bar">
+                    <font-awesome-icon icon="search" size="xl"/>
                     <input type="text" placeholder="Procurar" class="nav-assets__search-bar__input">
-                    <img src="../assets/page-nav/search.png" class="nav-assets__search-bar__icon">
                 </div>
                 <div class="nav-assets__favorite-products">
-                    <img src="../assets/page-nav/heart.png" class="nav-assets__icon">
+                    <font-awesome-icon :icon="['fas', 'heart']" size="2x"/>
                 </div>
                 <cart/>
             </div>
@@ -60,29 +60,10 @@ export default {
 </script>
 
 <style scoped>
-    @keyframes teste {
-        from {
-            transform: translateY(-50px);
-        } to {
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes teste2 {
-        from {
-            background: #181818;
-            color: #fff;
-        } to {
-            background: none;
-            color: #181818;
-        }
-    }
-
     .container-general-nav {
         width: 100%;
         background: none;
         color: #181818;
-        transition: all .25s ease;
         position: -webkit-sticky; /* Safari */
         position: sticky;
         z-index: 3;
@@ -90,7 +71,6 @@ export default {
     }
 
     .navScrolled {
-        /* animation: teste .3s ease-in-out; */
         background-color: #181818;
         color: #fff;
     }
