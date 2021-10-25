@@ -1,7 +1,7 @@
 <template>
     <div class="cart">
         <div @mouseover="cartOpenedState = true">
-            <font-awesome-icon icon="shopping-cart" size="2x" class="cart__icon"/>
+            <font-awesome-icon icon="cart-plus" size="2x" class="cart__icon"/>
         </div>
         <div class="cart-opened" v-if="cartOpenedState" @mouseover="cartOpenedState = true" @mouseleave="cartOpenedState = false">
             <span class="cart-opened__span" v-if="$store.state.cart.length === 0">Nenhum produto no carrinho</span>

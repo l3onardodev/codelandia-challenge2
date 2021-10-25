@@ -4,10 +4,10 @@ import router from "./router";
 import store from "./store";
 
 import { library } from '@fortawesome/fontawesome-svg-core'
-import { faShoppingCart, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faCartPlus, faHeart, faSearch } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-library.add(faHeart, faSearch, faShoppingCart);
+library.add(faHeart, faSearch, faCartPlus);
 
 const app = createApp(App);
 

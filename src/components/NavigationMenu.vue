@@ -23,9 +23,6 @@
                     <font-awesome-icon icon="search" size="1x"/>
                     <input type="text" placeholder="Procurar" class="nav-assets__search-bar__input">
                 </div>
-                <div class="nav-assets__favorite-products">
-                    <font-awesome-icon :icon="['fas', 'heart']" size="2x"/>
-                </div>
                 <cart/>
             </div>
         </nav>
@@ -146,10 +143,6 @@ export default {
 
     .nav-assets__search-bar__icon {
         max-width: 20px;
-    }
-
-    .nav-assets__favorite-products {
-        margin: 0 .5em;
     }
 
     .nav-assets__icon {
