@@ -135,6 +135,10 @@
           clientY = clientY / mHeight * 100;
 
           image_area.style.transform = `translate(-${clientX}%, -${clientY}%) scale(2)`;
+
+          image_area.style.cursor = 'zoom-in';
+          image_area.style.cursor = '-moz-zoom-in';
+          image_area.style.cursor = '-webkit-zoom-in';
         },
 
         imageZoomOnHoverLeft() {
@@ -269,7 +273,7 @@
       display: flex;
       flex-direction: column;
       width: 85%;
-      margin: 0 auto;
+      margin: 2em auto;
     }
 
     .related-products__title {
