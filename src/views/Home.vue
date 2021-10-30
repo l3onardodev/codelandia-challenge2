@@ -14,7 +14,7 @@
           <h2 class="products__title">Destaques</h2>
           <p class="products__paragraph">Frete gratis e chinelo de brinde é só aqui, aproveite por tempo limitado.</p>
           <div class="products-items">
-            <shoes></shoes>
+            <Shoes></Shoes>
           </div>
         </section>
         <footer>
@@ -24,7 +24,7 @@
 </template>
 
 <script>
-  import shoes from '../components/shoes';
+  import Shoes from '../components/Shoes';
   import NavigationMenu from '../components/NavigationMenu.vue'
   export default {
     name: 'Home',
@@ -32,7 +32,7 @@
       document.title = 'JordanShoes';
     },
     components: {
-      shoes,
+      Shoes,
       NavigationMenu
     },
     data() {
@@ -127,6 +127,10 @@
   .products__title {
     font-size: 2rem;
     font-weight: 600;
+  }
+
+  .products__paragraph {
+    margin: 1em 0;
   }
   
   .products-items {

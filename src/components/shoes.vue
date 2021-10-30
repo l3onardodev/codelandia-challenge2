@@ -66,12 +66,7 @@ export default {
         color: #f6f6f6;
         opacity: 0;
         transition: all .25s ease;
-    }
 
-    .opacity1 {
-        opacity: 1;
-    }
-    .product-item-hovered {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -81,6 +76,7 @@ export default {
     .product-item-hovered__title {
         text-align: center;
         font-size: 1.1rem;
+        font-weight: 600;
         width: 60%;
     }
 
@@ -101,6 +97,10 @@ export default {
     .product-item-hovered__button:hover {
         background-color: #f6f6f6;
         color: #181818;
+    }
+
+    .opacity1 {
+        opacity: 1;
     }
 
 </style>
