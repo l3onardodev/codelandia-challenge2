@@ -65,6 +65,7 @@ export default {
         position: sticky;
         z-index: 3;
         top: 0;
+        transition: background-color .5s;
     }
 
     .navScrolled {
@@ -91,10 +92,20 @@ export default {
 
     .nav-menu {
         list-style: none;
+        height: 100%;
     }
 
     .nav-menu li {
         float: left;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        transition: background-color .5s ease;
+    }
+
+    .nav-menu li:hover {
+        background-color: #181818;
+        color: #fff;
     }
 
     .nav-menu__link {
