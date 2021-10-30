@@ -77,5 +77,10 @@ export default createStore({
             },
         ],
         cart: [],
+        transformTitle: function(name) {
+            return name.split(' ').map((element) => {
+                return element.replace(element[0], element[0].toUpperCase());
+            }).join(' ');
+        }
     },
 });

@@ -10,8 +10,8 @@
                 <div class="cart-item__content">
                     <img :src="product.image" class="cart-item__content__image">
                     <div class="cart-item__content__details">
-                        <h3>{{ product.model }}</h3>
-                        <label> {{ product.price }} </label>
+                        <h4>{{ $store.state.transformTitle(product.model) }}</h4>
+                        <span> {{ product.price }} </span>
                     </div>
                 </div>
             </div>
@@ -34,6 +34,7 @@ export default {
         display: flex;
         align-items: center;
         height: 100%;
+        position: relative;
     }
     
     .cart__icon {
@@ -45,18 +46,18 @@ export default {
     .cart-opened {
         display: flex;
         flex-direction: column;
-        justify-content: center;
         position: absolute;
         top: 100%;
         right: 0;
         bottom: 0;
-        width: 300px;
-        height: auto;
+        width: 350px;
+        height: 300px;
         color: #181818;
         background-color: rgb(255, 255, 255);
         box-shadow: 0px 10px 15px rgb(1, 1, 1, 0.5);
         z-index: 3;
-        overflow: hidden;
+        overflow-y: scroll;
+        padding: 1em .5em;
     }
 
     .cart-opened__span {
@@ -67,7 +68,8 @@ export default {
 
     .cart-item {
         position: relative;
-        padding: 2em 0;
+        padding-bottom: 1em;
+        cursor: pointer;
     }
 
     .cart-item__content {
@@ -83,5 +85,7 @@ export default {
 
     .cart-item__content__details {
         width: 60%;
+        padding: 0 1em;
+        width: 100%;
     }
 </style>

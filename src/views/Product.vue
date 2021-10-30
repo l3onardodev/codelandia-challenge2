@@ -55,11 +55,15 @@
           </swiper-slide>
         </swiper>
       </section>
+      <Footer/>
   </div>
 </template>
 
 <script>
   import NavigationMenu from '../components/NavigationMenu.vue';
+  import Footer from '../components/Footer.vue';
+  
+  import { useToast } from "vue-toastification";
 
   import SwiperCore, { Navigation, Pagination, A11y, Autoplay } from "swiper";
   import { Swiper, SwiperSlide } from 'swiper/vue';
@@ -80,7 +84,8 @@
       components: {
         Swiper,
         SwiperSlide,
-        NavigationMenu
+        NavigationMenu,
+        Footer
       },
       methods: {
         findProduct() {
@@ -100,8 +105,19 @@
         },
 
         addProductToCart(product) {
-          console.log('adicionado');
-          return this.$store.state.cart.push(product);
+          console.log(product);
+          if(this.$store.state.cart.some((element) => element === product)) {
+              //item já está no carrinho
+              this.toast.error("Esse item já está no carrinho", {
+                timeout: 2000
+              })
+              return;
+          } else {
+              this.toast.success("Item adicionado ao carrinho!", {
+                timeout: 2000
+              })
+              return this.$store.state.cart.push(product);
+          }
         },
 
         imageZoomOnHoverEntry(event) {
@@ -124,9 +140,28 @@
         imageZoomOnHoverLeft() {
           const image_area = document.querySelector('.product__image');
           image_area.style.transform = 'translate(-50%, -50%) scale(1)'
+        },
+        
+        useToast() {
+          this.toast.info("I'm an info toast!");
         }
       },
       setup() {
+        // Get toast interface
+        const toast = useToast();
+
+        // Use it!
+        // toast("I'm a toast!");
+
+        // // or with options
+        // toast.success("My toast content", {
+        //   timeout: 2000
+        // });
+        // These options will override the options defined in the "app.use" plugin registration for this specific toast
+
+        // Make it available inside methods
+        // return { toast }
+
         const onSwiper = (swiper) => {
           console.log(swiper);
         };
@@ -136,6 +171,7 @@
         return {
           onSwiper,
           onSlideChange,
+          toast
         };
       },
   }

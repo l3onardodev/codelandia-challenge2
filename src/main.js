@@ -9,8 +9,13 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 library.add(faHeart, faSearch, faCartPlus);
 
+//vue toast
+import Toast from "vue-toastification";
+// Import the CSS or use your own!
+import "vue-toastification/dist/index.css";
+
 const app = createApp(App);
 
-app.use(router).use(store).mount("#app");
+app.use(router).use(store).use(Toast).mount("#app");
 
 app.component('font-awesome-icon', FontAwesomeIcon);
