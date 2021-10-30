@@ -31,7 +31,6 @@ export default {
 
 <style scoped>
     .cart {
-        position: relative;
         display: flex;
         align-items: center;
         height: 100%;
@@ -51,8 +50,8 @@ export default {
         top: 100%;
         right: 0;
         bottom: 0;
-        width: 400px;
-        height: 100%;
+        width: 300px;
+        height: auto;
         color: #181818;
         background-color: rgb(255, 255, 255);
         box-shadow: 0px 10px 15px rgb(1, 1, 1, 0.5);
@@ -62,12 +61,13 @@ export default {
 
     .cart-opened__span {
         text-align: center;
-        font-size: 1.25rem;
+        font-size: 1rem;
         font-weight: 600;
     }
 
     .cart-item {
-        margin: 1em 0;
+        position: relative;
+        padding: 2em 0;
     }
 
     .cart-item__content {
