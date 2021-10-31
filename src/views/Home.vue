@@ -22,7 +22,7 @@
 </template>
 
 <script>
-  import Shoes from '../components/Shoes';
+  import Shoes from '../components/Shoes.vue';
   import NavigationMenu from '../components/NavigationMenu.vue'
   import Footer from '../components/Footer.vue'
 
