@@ -13,15 +13,8 @@
 
 <script>
 
-import items from '../views/Home.vue';
-
 export default {
-    props: ['item-object'],
-    data() {
-        return {
-            items
-        }
-    },
+    name: 'Shoes',
 }
 
 </script>
