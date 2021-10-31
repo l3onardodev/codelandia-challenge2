@@ -3,7 +3,7 @@
         <div @mouseover="cartOpenedState = true">
             <font-awesome-icon icon="cart-plus" size="2x" class="cart__icon"/>
         </div>
-        <transition name="fade">
+        <transition name="fade" appear>
             <div class="cart-opened" v-if="cartOpenedState" @mouseover="cartOpenedState = true" @mouseleave="cartOpenedState = false">
                 <span class="cart-opened__span" v-if="$store.state.cart.length === 0">Nenhum produto no carrinho</span>
 

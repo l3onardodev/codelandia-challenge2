@@ -22,12 +22,13 @@ export default {
 <style>
     .product-item {
         height: 302px;
-        width: 24.5%;
-        max-width: 300px;
+        width: 100%;
+        position: relative;
         background-color: #EBE9EA;
         display: flex;
         border-radius: 2.5px;
-        margin: 1em 0;
+        
+        justify-self: center;
     }
 
     .product-item__image {
@@ -38,16 +39,17 @@ export default {
     }
 
     .items {
-        display: flex;
-        justify-content: space-between;
-        flex-wrap:wrap;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-column-gap: 10px;
+        grid-row-gap: 20px;
     }
 
     .product-item-hovered {
         position: absolute;
         height: 302px;
-        width: 21%;
-        max-width: 295px;
+        width: 100%;
         background-color: rgb(0, 0, 0, 0.65);
         color: #f6f6f6;
         opacity: 0;
@@ -87,6 +89,33 @@ export default {
 
     .opacity1 {
         opacity: 1;
+    }
+
+    @media screen and (max-width: 480px) {
+        .items {
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+        }
+    }
+    @media screen and (min-width: 481px) {
+        .items {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr 1fr;
+        }
+    }
+
+    @media screen and (min-width: 769px) {
+        .items {
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr 1fr;
+        }
+    }
+
+    @media screen and (min-width: 1025px) {
+        .items {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+        }
     }
 
 </style>

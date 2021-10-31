@@ -103,9 +103,11 @@
     justify-content: center;
     text-align: left;
   }
+  
   .header__title {
     font-size: 2rem;
   }
+
   .header__paragraph {
     font-size: 1.2rem;
     font-weight: 500;
@@ -132,9 +134,28 @@
 
   .products__paragraph {
     margin: 1em 0;
+    text-align: center;
   }
   
   .products-items {
     width: 100%;
+  }
+
+  @media screen and (max-width: 480px) {
+    .header__paragraph {
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 481px) {
+    .header__paragraph {
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 769px) {
+    .header__paragraph {
+      width: 50%;
+    }
   }
 </style>

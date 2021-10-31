@@ -38,6 +38,20 @@
           :slides-per-view="4"
           :autoplay="{ delay: 3000 }"
           :navigation="{ clickable: true }"
+          :breakpoints="{
+              // when window width is <= 499px
+              200: {
+                  slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetweenSlides: 50,
+              },
+              1024: {
+                slidesPerView: 4,
+                spaceBetweenSlides: 50
+              },
+          }"
           @swiper="onSwiper"
           @slideChange="onSlideChange"
           ref="mySlider"
@@ -70,8 +84,6 @@
 
   // Import Swiper styles
   import "swiper/swiper-bundle.min.css";
-  // import "swiper/components/navigation/navigation.css";
-  // import "swiper/components/pagination/pagination.css";
 
   SwiperCore.use([Navigation, Pagination, A11y, Autoplay]);
 
@@ -377,6 +389,25 @@
     /* hover effects */
     .swiper-product:hover .swiper-product-image img{
       transform: scale(1.03);
+    }
+
+    @media screen and (max-width: 480px) {
+        .product-container {
+          flex-direction: column;
+          width: 90%;
+          padding: 1em 0;;
+          /* border: 1px solid red; */
+        }
+
+         .product-container-image {
+          width: 100%;
+          margin: 1em 0;
+        }
+
+        .product-container-details {
+          width: 100%;
+          padding: 0 .5em;
+        } 
     }
     
 </style>
