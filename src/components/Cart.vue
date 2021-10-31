@@ -3,19 +3,21 @@
         <div @mouseover="cartOpenedState = true">
             <font-awesome-icon icon="cart-plus" size="2x" class="cart__icon"/>
         </div>
-        <div class="cart-opened" v-if="cartOpenedState" @mouseover="cartOpenedState = true" @mouseleave="cartOpenedState = false">
-            <span class="cart-opened__span" v-if="$store.state.cart.length === 0">Nenhum produto no carrinho</span>
+        <transition name="fade">
+            <div class="cart-opened" v-if="cartOpenedState" @mouseover="cartOpenedState = true" @mouseleave="cartOpenedState = false">
+                <span class="cart-opened__span" v-if="$store.state.cart.length === 0">Nenhum produto no carrinho</span>
 
-            <div class="cart-item" v-for="product in $store.state.cart" :key="product.id">
-                <div class="cart-item__content">
-                    <img :src="product.image" class="cart-item__content__image">
-                    <div class="cart-item__content__details">
-                        <h4>{{ $store.state.transformTitle(product.model) }}</h4>
-                        <span> {{ product.price }} </span>
+                <div class="cart-item" v-for="product in $store.state.cart" :key="product.id">
+                    <div class="cart-item__content">
+                        <img :src="product.image" class="cart-item__content__image">
+                        <div class="cart-item__content__details">
+                            <h4>{{ $store.state.transformTitle(product.model) }}</h4>
+                            <span> {{ product.price }} </span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </transition>
     </div>
 </template>
 
@@ -30,6 +32,19 @@ export default {
 </script>
 
 <style scoped>
+    /* transition's classes */
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity 1s;
+    }
+    
+    .fade-enter-to {
+        opacity: 1;
+    }
+
+    .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+        opacity: 0;
+    }
+
     .cart {
         display: flex;
         align-items: center;
