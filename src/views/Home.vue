@@ -14,7 +14,8 @@
           <h2 class="products__title">Destaques</h2>
           <p class="products__paragraph">Frete gratis e chinelo de brinde é só aqui, aproveite por tempo limitado.</p>
           <div class="products-items">
-            <Shoes></Shoes>
+            <!-- <Shoes></Shoes> -->
+            a
           </div>
         </section>
         <Footer/>
@@ -22,7 +23,7 @@
 </template>
 
 <script>
-  import Shoes from './../components/Shoes.vue';
+  // import Shoes from './../components/Shoes.vue';
   import NavigationMenu from '../components/NavigationMenu.vue'
   import Footer from '../components/Footer.vue'
 
@@ -32,7 +33,6 @@
       document.title = 'JordanShoes';
     },
     components: {
-      Shoes,
       NavigationMenu,
       Footer
     },
